@@ -1,7 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit';
-import contactsReducer from './contacts/contactsSlice';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { contactsReducer } from './contacts/contactsSlice';
+import { authReducer } from './auth/slice';
+
+const rootReducer = combineReducers({
+  contacts: contactsReducer,
+  auth: authReducer,
+});
 
 export const store = configureStore({
-  reducer: contactsReducer,
+  reducer: rootReducer,
   devTools: process.env.NODE_ENV !== 'production',
 });
