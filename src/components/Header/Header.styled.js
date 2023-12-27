@@ -9,6 +9,7 @@ export const StyledHeader = styled.header`
   min-height: 60px;
   background-color: lavender;
   box-shadow: 1px 2px 4px rgb(204, 203, 203);
+  margin-bottom: 30px;
 
   & h1 {
     color: rgb(161, 161, 218);
