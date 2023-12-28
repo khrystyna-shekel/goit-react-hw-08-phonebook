@@ -12,7 +12,7 @@ const Navigation = () => {
     <>
       <StyledNav>
         <StyledNavLink to="/">Home</StyledNavLink>
-        <StyledNavLink to="/contacts">Contacts</StyledNavLink>
+        {isLoggedIn && <StyledNavLink to="/contacts">Contacts</StyledNavLink>}
         {!isLoggedIn && (
           <>
             <StyledNavLink to="/register">Sign Up</StyledNavLink>

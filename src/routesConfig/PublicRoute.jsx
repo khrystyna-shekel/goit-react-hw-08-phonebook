@@ -7,7 +7,7 @@ export const PublicRoute = ({ children }) => {
   const location = useLocation();
 
   if (isLoggedIn) {
-    return <Navigate to={location.state?.from || '/'} />;
+    return <Navigate to={location.state?.from || '/contacts'} />;
   } else {
     return children;
   }

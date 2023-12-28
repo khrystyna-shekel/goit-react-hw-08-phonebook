@@ -8,13 +8,21 @@ import {
   StyledLabel,
 } from 'components/ContactForm/ContactForm.styled';
 import styled from 'styled-components';
+import { toast } from 'react-toastify';
 
 export const RegisterPage = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
 
   const sumbit = data => {
-    dispatch(registerThunk(data));
+    dispatch(registerThunk(data))
+      .unwrap()
+      .then(() => {
+        toast.success(`Welcome!`);
+      })
+      .catch(error => {
+        toast.error('Something went wrong!');
+      });
   };
   return (
     <StyledSection>
