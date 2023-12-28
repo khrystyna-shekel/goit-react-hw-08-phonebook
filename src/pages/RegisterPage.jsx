@@ -2,6 +2,12 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { registerThunk } from '../redux/auth/operations';
+import {
+  StyledBtn,
+  StyledInput,
+  StyledLabel,
+} from 'components/ContactForm/ContactForm.styled';
+import styled from 'styled-components';
 
 export const RegisterPage = () => {
   const { register, handleSubmit } = useForm();
@@ -11,32 +17,54 @@ export const RegisterPage = () => {
     dispatch(registerThunk(data));
   };
   return (
-    <>
-      <form onSubmit={handleSubmit(sumbit)}>
-        <label htmlFor="name_reg">
+    <StyledSection>
+      <StyledForm onSubmit={handleSubmit(sumbit)}>
+        <StyledLabel htmlFor="name_reg">
           Name
-          <input {...register('name')} type="text" name="name" id="name_reg" />
-        </label>
-        <label htmlFor="email_reg">
+          <StyledInput
+            {...register('name')}
+            type="text"
+            name="name"
+            id="name_reg"
+          />
+        </StyledLabel>
+        <StyledLabel htmlFor="email_reg">
           Email
-          <input
+          <StyledInput
             {...register('email')}
             type="text"
             name="email"
             id="email_reg"
           />
-        </label>
-        <label htmlFor="password_reg">
+        </StyledLabel>
+        <StyledLabel htmlFor="password_reg">
           Password
-          <input
+          <StyledInput
             {...register('password')}
             type="password"
             name="password"
             id="password_reg"
           />
-        </label>
-        <button type="submit">Sign Up</button>
-      </form>
-    </>
+        </StyledLabel>
+        <StyledBtn type="submit">Sign Up</StyledBtn>
+      </StyledForm>
+    </StyledSection>
   );
 };
+
+const StyledSection = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  box-shadow: 5px 6px 12px rgb(204, 203, 203);
+  border-radius: 5px;
+`;

@@ -10,7 +10,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <StyledWrapper>
+      <StyledSection>
         <h1>My phonebook {user}</h1>
         {isLoggedIn ? (
           <StyledNavLink to="/contacts">My contacts</StyledNavLink>
@@ -20,14 +20,14 @@ const HomePage = () => {
             <StyledNavLink to="/login">Log In</StyledNavLink>
           </StyledLinks>
         )}
-      </StyledWrapper>
+      </StyledSection>
     </div>
   );
 };
 
 export default HomePage;
 
-const StyledWrapper = styled.main`
+const StyledSection = styled.main`
   display: flex;
   flex-direction: column;
   gap: 20px;
