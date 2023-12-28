@@ -11,7 +11,7 @@ const HomePage = () => {
   return (
     <div>
       <StyledSection>
-        <h1>My phonebook {user}</h1>
+        {isLoggedIn ? <h1>{user}'s phonebook</h1> : <h1>Join us</h1>}
         {isLoggedIn ? (
           <StyledNavLink to="/contacts">My contacts</StyledNavLink>
         ) : (
