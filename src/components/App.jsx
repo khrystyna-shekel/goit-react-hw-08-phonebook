@@ -5,10 +5,12 @@ import { Header } from './Header/Header';
 import { NotFound } from 'pages/NotFound';
 import { RegisterPage } from 'pages/RegisterPage';
 import { LoginPage } from 'pages/LoginPage';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { refreshThunk } from '../redux/auth/operations';
 import { PrivateRoute } from 'routesConfig/PrivateRoute';
 import { PublicRoute } from 'routesConfig/PublicRoute';
+import { selectIsRefresh } from '../redux/auth/selectors';
+import { Loader } from '../components/Loader';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -17,7 +19,11 @@ export const App = () => {
     dispatch(refreshThunk());
   }, [dispatch]);
 
-  return (
+  const isRefresh = useSelector(selectIsRefresh);
+
+  return isRefresh ? (
+    <Loader />
+  ) : (
     <>
       <Header />
       <Routes>

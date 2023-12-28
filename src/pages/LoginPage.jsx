@@ -14,7 +14,6 @@ export const LoginPage = () => {
     dispatch(loginThunk(data))
       .unwrap()
       .then(res => {
-        navigate('/contacts');
         toast.success(`Welcome ${res.user.name}!`);
       })
       .catch(error => {

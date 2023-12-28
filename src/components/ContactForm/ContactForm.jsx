@@ -40,6 +40,7 @@ export const ContactForm = () => {
     };
 
     if (
+      contacts &&
       contacts.some(
         contact => contact.name.toLowerCase() === name.toLowerCase()
       )
