@@ -2,13 +2,11 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from '../redux/auth/operations';
-import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 export const LoginPage = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const sumbit = data => {
     dispatch(loginThunk(data))

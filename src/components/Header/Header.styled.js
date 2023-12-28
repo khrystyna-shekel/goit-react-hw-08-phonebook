@@ -28,7 +28,8 @@ export const StyledNavLink = styled(NavLink)`
   color: rgb(161, 161, 218);
   font-style: oblique;
 
-  &.active {
+  &.active,
+  &:hover {
     text-decoration: underline;
   }
 `;

@@ -4,6 +4,7 @@ import {
   deleteContactThunk,
   fetchContactsThunk,
 } from './operations';
+import { logoutThunk } from '../../redux/auth/operations';
 
 const initialState = {
   contacts: {
@@ -27,6 +28,9 @@ export const contactsSlice = createSlice({
       .addCase(fetchContactsThunk.fulfilled, (state, { payload }) => {
         state.contacts.items = payload;
         state.contacts.isLoading = false;
+      })
+      .addCase(logoutThunk.fulfilled, state => {
+        state.contacts.items = [];
       })
       .addCase(deleteContactThunk.fulfilled, (state, { payload }) => {
         state.contacts.items = state.contacts.items.filter(
