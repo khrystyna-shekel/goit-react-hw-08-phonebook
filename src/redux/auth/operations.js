@@ -40,3 +40,23 @@ export const logoutThunk = createAsyncThunk(
     }
   }
 );
+
+export const refreshThunk = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const savedToken = thunkAPI.getState().auth.token;
+
+    if (savedToken) {
+      setToken(savedToken);
+    } else {
+      return thunkAPI.rejectWithValue("Token doesn't exist!");
+    }
+
+    try {
+      const { data } = await api.get('/users/current');
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

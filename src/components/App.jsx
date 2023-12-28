@@ -1,12 +1,20 @@
 import ContactsPage from 'pages/ContactsPage';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Header } from './Header/Header';
 import { NotFound } from 'pages/NotFound';
 import { RegisterPage } from 'pages/RegisterPage';
 import { LoginPage } from 'pages/LoginPage';
+import { useDispatch } from 'react-redux';
+import { refreshThunk } from '../redux/auth/operations';
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshThunk());
+  }, [dispatch]);
+
   return (
     <>
       <Header />
